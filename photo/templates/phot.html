@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block con %}
+
+<div class="m-2  border rounded" style="background-image:linear-gradient(to right, rgb(0, 255, 81) , yellow, aqua)">
+    <img src="{{one.img.url}}" alt="can founded" width="50%, hight:50%">
+    <p class="m-2 p-2">ss {{ one.desc }}</p>
+    <p> category : {{one.catg}}</p>
+    <p> slug : {{one.slug}}</p>
+    <a href="{% url 'photoss' %}"><button>back <-</button></a>
+</div>
+{% endblock con %}

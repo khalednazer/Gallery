@@ -1,0 +1,6 @@
+__pycache__/
+migrations/
+*.png
+staticfiles/
+db.sqlite3
+manage.py

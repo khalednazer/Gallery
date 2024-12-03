@@ -1,0 +1,76 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block con %}
+<h1>Filter Photos</h1>
+<button class="btn bg-info one-b m-2">filter one</button>
+<button class="btn bg-info two-b m-2">filter two</button>
+<a class="nav-link col-2" href="{% url 'photoss' %}"><button class="col-12" > All</button></a>
+<div class="one-d">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="send d-flex flex-wrap w-25">
+            {% for x in catt %}
+            <button class="col-10 mt-1 rounded ms-2" type="submit" name="{{x}}" >{{x}}</button>
+            {% endfor %}
+        </div>
+    </form>
+</div>
+
+<div class="heddin two-d" style="display: none;">
+    <form method="GET">   
+        {{ filter.form.as_p }}
+        <button type="submit">Apply Filter</button>
+    </form>
+</div>
+
+<!-- <ul>   new filter not used
+    <li>all photo</li>
+    {% for x in catt %}
+    <li>
+        <a href="{% url 'photoss' %}?catg={{x.name}}">{{ x.name}}</a>
+    </li>
+    
+    {% endfor %}
+</ul> -->
+
+
+<div> <a href="{% url 'creates' %}"><button class="bg-info m-3"> add photo</button></a> </div>
+<div class="gall d-flex flex-wrap">
+    {% for x in data %}
+    <div class="m-2  border rounded" style="background-image:linear-gradient(to right, rgb(0, 255, 81) , yellow, aqua)">
+        <img src="{{x.img.url}}" alt="can founded" width="100%">
+        <p class="m-2 p-2">category : {{ x.catg.name }}</p>
+        <a href="{% url 'onephotoo' x.slug %}"><button class="m-2 bg-warning w-50">view</button></a>
+    </div>
+    {% endfor %}
+</div>
+<!-- <div>
+    {% if filtt %}
+    {% for x in filtt %}
+    <h3> {{x}} </h3>
+    <h3> {{x.catg}} </h3>
+    <hr>
+    {% endfor %}
+    {% endif %}
+</div> -->
+<script>
+    console.log('now')
+    let one = document.querySelector('.one-b')
+    let two = document.querySelector('.two-b')
+    let one_d = document.querySelector('.one-d')
+    let two_d = document.querySelector('.two-d')
+    two.onclick=function(){
+        two_d.style.display = 'block'
+        one_d.style.display = 'none'
+    }
+    one.onclick=function(){
+        two_d.style.display = 'none'
+        one_d.style.display = 'block'
+    }
+</script>
+{% endblock con %}
+
+<!-- https://www.youtube.com/watch?v=sSquD2u5Ie0&list=PL-51WBLyFTg38qZ0KHkJj-paDQAAu9HiP&index=15&ab_channel=DennisIvy -->
+<!-- https://chatgpt.com/c/674aa662-7080-8003-9b40-be7c3154c902 -->
+<!-- https://github.com/khalednazer/portfolio_project/blob/main/Portfolio/settings.py -->

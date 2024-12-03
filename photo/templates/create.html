@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block con %}
+<h2>create a new photo</h2>
+<div>
+
+    <form method="POST" class=" bg-info w-75 rounded p-3 " enctype="multipart/form-data" style="transform: translate(15%, 10%); height: 300px;">
+        {% csrf_token %}
+        <div class="d-flex flex-wrap">
+                <div>
+                    {{form.as_p}}
+                </div>
+                <input type="submit" name="" id="" value="send data" class="bg-success text-light">
+            
+            
+        </div>
+    </form>
+</div>
+{% endblock con %}
